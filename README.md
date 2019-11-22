@@ -27,3 +27,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+### 组件库
+```
+1.进度条
+<z-progress :percent="12"></z-progress>
+```

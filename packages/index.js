@@ -1,7 +1,9 @@
 import ZInput from './z-input/index'
+import ZProgress from './z-progress/index'
 
 const components = [
     ZInput,
+    ZProgress,
 ]
 
 const install = function (Vue) {
