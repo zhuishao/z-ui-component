@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -27,45 +26,9 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-    <z-input v-model="percent"></z-input>
-    <z-progress :percent="percent"></z-progress>
-    <button @click="onAdd">click</button>
-    <el-table
-            :data="tableData"
-            style="width: 100%"
-            height="250">
-      <el-table-column
-              fixed
-              prop="date"
-              label="日期"
-              width="150">
-      </el-table-column>
-      <el-table-column
-              prop="name"
-              label="姓名"
-              width="120">
-      </el-table-column>
-      <el-table-column
-              prop="province"
-              label="省份"
-              width="120">
-      </el-table-column>
-      <el-table-column
-              prop="city"
-              label="市区"
-              width="120">
-      </el-table-column>
-      <el-table-column
-              prop="address"
-              label="地址"
-              width="300">
-      </el-table-column>
-      <el-table-column
-              prop="zip"
-              label="邮编"
-              width="120">
-      </el-table-column>
-    </el-table>
+    <div class="x"></div>
+    <input type="radio" name="skin" value="yellow" @click="changeSkin">黄色
+    <input type="radio" name="skin" value="red" @click="changeSkin">红色
 
   </div>
 </template>
@@ -73,70 +36,22 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  data() {
-    return {
-      percent:95,
-      tableData: [{
-        date: '2016-05-03',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }, {
-        date: '2016-05-02',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }, {
-        date: '2016-05-08',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }, {
-        date: '2016-05-06',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }, {
-        date: '2016-05-07',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      }]
-    }
-    }
-  ,
-  methods: {
-    onAdd(){
-      this.percent = Math.random()*100;
-    }
+  created(){
 
+  },
+  methods: {
+    changeSkin(e){
+      console.log(e.target.value);
+      const value = e.target.value;
+      const links = Array.from(document.querySelectorAll('link[title]'));
+      links.forEach(link => {
+        link.disabled = true;
+        if(link.href.indexOf(value) !== -1){
+          link.disabled = false;
+        }
+      })
+
+    }
   },
 }
 </script>
